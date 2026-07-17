@@ -339,6 +339,7 @@ class App(ctk.CTk):
         checkpointpath = Path(self.allmodels_path, curmodel, checkpoint)
         langid = curlang.split(":")[0]
         inputpath = Path(self.foldertext.get())
+        inferpath = Path(self.parent, "infer.py")
 
         silphn = self.silphnvar.get()
         silthresh = self.silbox.get()
@@ -352,7 +353,7 @@ class App(ctk.CTk):
 
         cmd = [
                f"conda activate wfl &&",
-               f"python \"{self.parent}\infer.py\"",
+               f"python \"{inferpath}\"",
                f"-i \"{inputpath}\"", 
                f"-ckpt \"{checkpointpath}\"", 
                f"-c \"{configpath}\"", 
